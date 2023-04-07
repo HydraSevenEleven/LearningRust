@@ -14,5 +14,5 @@ fn convert_binary_as_string_to_decimal(s: &str) -> i64 {
     .map(|(index,item)| {
         item * i64::pow(2,index as u32)        
     })
-    .sum()
+    .sum()   
 }
