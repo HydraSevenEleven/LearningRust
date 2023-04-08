@@ -7,9 +7,11 @@
         }
     Please, take care that this file is in the same directory as main.rs (i.e. under src)
  */
-
 pub fn loop_example() {
+    let mut index = 0;
     loop {
-        println!("This is an infinite loop!");
+        println!("This is a finite loop! It stops if index is 5. Now is index = {}", index);
+        if index == 5 { break; }
+        index += 1;
     }
 }
