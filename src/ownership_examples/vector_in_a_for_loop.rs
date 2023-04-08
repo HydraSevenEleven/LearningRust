@@ -1,5 +1,5 @@
 pub fn vector_in_a_for_loop() {
-    let mut my_vec: Vec<i32> = vec![1,2,3,4,5];
+    let my_vec: Vec<i32> = vec![1,2,3,4,5];
 
     my_vec
     .iter()
