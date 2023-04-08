@@ -4,6 +4,7 @@ pub fn vector_in_a_for_loop() {
     my_vec
     .iter()
     .map(|item|{
+        *item += 1;  // item is a reference to the value. That means I cannot change the value of item 
         println!("{:?}", item);
     })
     .for_each(drop);
