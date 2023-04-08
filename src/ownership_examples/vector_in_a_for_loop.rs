@@ -5,5 +5,5 @@ pub fn vector_in_a_for_loop() {
         println!("{}", item);
     }
 
-    println!("{:?}", my_vec);  // compiler error
+    println!("{:?}", my_vec);  
 }
