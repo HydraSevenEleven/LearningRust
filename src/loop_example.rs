@@ -15,3 +15,13 @@ pub fn loop_example() {
         index += 1;
     }
 }
+
+pub fn loop_with_return_value() -> i32 {
+    let mut count = 0;
+    loop {
+        count += 1;
+        if count == 5 {
+            break count;
+        }
+    }
+}
