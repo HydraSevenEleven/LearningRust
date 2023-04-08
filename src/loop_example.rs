@@ -25,3 +25,17 @@ pub fn loop_with_return_value() -> i32 {
         }
     }
 }
+
+pub fn example_of_using_continue() -> i32 {
+    let mut count = 0;
+    loop {
+        count += 1;
+        if count == 5 {
+            break count;
+        }
+        // else {
+        //     continue;
+        // }
+        println!("The value of count is {}", count);     // works only if the else-block doesn't exist   
+    }
+}
