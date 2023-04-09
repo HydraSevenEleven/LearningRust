@@ -47,4 +47,17 @@ pub fn person_manager() {
         default_person.reward, 
         default_person.compute_taxes(0.3)
     );
+
+    let default_dalton = Dalton {
+        id: 1,
+        person: Person::new(),
+    };
+
+    println!("The default Dalton with id {} is {} {}. For him you could earn a reward of {}$. Catch him (if you can).. but you have to pay {}$ in taxes", 
+        default_dalton.id,
+        default_dalton.person.first_name, 
+        default_dalton.person.surname, 
+        default_dalton.person.reward, 
+        default_dalton.person.compute_taxes(0.3)
+    );
 }
