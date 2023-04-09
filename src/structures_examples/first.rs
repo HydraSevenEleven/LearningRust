@@ -5,12 +5,19 @@ struct Person {  // by convention in CamelCase
 }
 
 impl Person{
+    fn new() -> Self {
+        Person {
+            surname: String::from("Doe"),
+            first_name: String::from("John"),
+            reward: 1,
+        }
+    }
     fn compute_taxes(&self, tax_rate:f32) -> i32 {  // always a reference on the instance of the struct
         (self.reward as f32 * tax_rate) as i32
     }
 }
 
-struct Dalton {
+struct Dalton { // the Dalton structure 'inherit' from the Person structure and add a new property
     id: i32,
     person: Person,
 }
@@ -31,5 +38,13 @@ pub fn person_manager() {
         dalton.person.surname, 
         dalton.person.reward, 
         dalton.person.compute_taxes(0.3)
+    );
+
+    let default_person = Person::new();
+    println!("The default person is {} {}. For him you could earn a reward of {}$. Catch him (if you can).. but you have to pay {}$ in taxes", 
+        default_person.first_name, 
+        default_person.surname, 
+        default_person.reward, 
+        default_person.compute_taxes(0.3)
     );
 }
