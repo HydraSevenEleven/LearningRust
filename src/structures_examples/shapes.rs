@@ -1,63 +1,80 @@
-const PI:f32 = 3.14;
-
-struct Shape {
-    id: i32,
-    edges: i8,
-    name: String,
-}
-
-struct Circle {
-    shape: Shape,
-    radius: i32,
-}
-
-struct Triangle {
-    shape: Shape,
-    base: f32,
-    height: f32,
-}
-
-enum ShapeType{
-    Circle(Circle),
-    Triangle(Triangle)
-}
-
-impl ShapeType {
-    fn calculate_area(&self) -> f32 {
-        match self {
-            ShapeType::Circle(item) => f32::powf(item.radius as f32, 2.0) * PI,
-            ShapeType::Triangle(item) => item.base * item.height / 2.0,
-        }
+mod shape {
+    pub struct Shape {
+        pub id: i32,
+        pub edges: i8,
+        pub name: String,
     }
-
-    fn render_infos(&self) {
-        match self {
-            ShapeType::Circle(item) => println!("This is a {} (which has id {} and {} shape(s)) of radius {} and area {}", item.shape.name, item.shape.id, item.shape.edges, item.radius, self.calculate_area()),
-            ShapeType::Triangle(item) => println!("This is a {} (which has id {} and {} shape(s)) with basis {} and height {} and area {}", item.shape.name, item.shape.id, item.shape.edges, item.base, item.height, self.calculate_area())
-        }
+    pub struct Circle {
+        pub shape: Shape,
+        pub radius: i32,
+    }
+    
+    pub struct Triangle {
+        pub shape: Shape,
+        pub base: f32,
+        pub height: f32,
     }
 }
 
-pub fn shape_manager() {
-    let circle = Circle {
-        shape: Shape {
-            id: 1,
-            edges: 0,
-            name: String::from("circle"),
-        },
-        radius:2,
-    };
+mod shape_type {
 
-    let triangle = Triangle {
-        shape: Shape {
-            id:2,
-            edges:3,
-            name: String::from("triangle"),
-        },
-        height: 3.0,
-        base: 2.0,
-    };
+    use crate::structures_examples::shapes::shape::Circle;
+    use crate::structures_examples::shapes::shape::Triangle;
 
-    let vec_of_shape_types:Vec<ShapeType> = vec![ShapeType::Circle(circle), ShapeType::Triangle(triangle)];
-    vec_of_shape_types.iter().map(|item| item.render_infos()).for_each(drop);
+    const PI:f32 = 3.14;
+    pub enum ShapeType{
+        Circle(Circle),
+        Triangle(Triangle)
+    }
+
+    impl ShapeType {
+        fn calculate_area(&self) -> f32 {
+            match self {
+                ShapeType::Circle(item) => f32::powf(item.radius as f32, 2.0) * PI,
+                ShapeType::Triangle(item) => item.base * item.height / 2.0,
+            }
+        }
+
+        pub fn render_infos(&self) {
+            match self {
+                ShapeType::Circle(item) => println!("This is a {} (which has id {} and {} shape(s)) of radius {} and area {}", item.shape.name, item.shape.id, item.shape.edges, item.radius, self.calculate_area()),
+                ShapeType::Triangle(item) => println!("This is a {} (which has id {} and {} shape(s)) with basis {} and height {} and area {}", item.shape.name, item.shape.id, item.shape.edges, item.base, item.height, self.calculate_area())
+            }
+        }
+    }
+}
+
+pub mod shape_manager {
+
+    use crate::structures_examples::shapes::shape_type::ShapeType;
+    use crate::structures_examples::shapes::shape::Circle;
+    use crate::structures_examples::shapes::shape::Shape;
+    use crate::structures_examples::shapes::shape::Triangle;
+
+    fn create_circle() -> Circle{
+        Circle {
+            shape: Shape {
+                id: 1,
+                edges: 0,
+                name: String::from("circle"),
+            },
+            radius:2,
+        }
+    }
+
+    fn create_triangle() -> Triangle {
+        Triangle {
+            shape: Shape {
+                id:2,
+                edges:3,
+                name: String::from("triangle"),
+            },
+            height: 3.0,
+            base: 2.0,
+        }        
+    } 
+
+    pub fn shape_manager() {
+        vec![ShapeType::Circle(create_circle()), ShapeType::Triangle(create_triangle())].iter().map(|item| item.render_infos()).for_each(drop);    
+    }
 }
