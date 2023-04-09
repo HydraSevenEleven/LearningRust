@@ -10,17 +10,26 @@ impl Person{
     }
 }
 
+struct Dalton {
+    id: i32,
+    person: Person,
+}
+
 pub fn person_manager() {
-    let person = Person {
-        surname: String::from("Dalton"),
-        first_name: String::from("Joe"),        
-        reward: 100_000,
+    let dalton = Dalton {
+        id: 1,
+        person: Person {
+            surname: String::from("Dalton"),
+            first_name: String::from("Joe"),        
+            reward: 100_000,
+        },
     };
-    
-    println!("The reward for {} {} is {}$. Catch him (if you can).. and you have to pay {}$ in taxes", 
-        person.first_name, 
-        person.surname, 
-        person.reward, 
-        person.compute_taxes(0.3)
+
+    println!("The Dalton with id {} is {} {}. For him you could earn a reward of {}$. Catch him (if you can).. but you have to pay {}$ in taxes", 
+        dalton.id,
+        dalton.person.first_name, 
+        dalton.person.surname, 
+        dalton.person.reward, 
+        dalton.person.compute_taxes(0.3)
     );
 }
