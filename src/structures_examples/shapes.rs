@@ -58,9 +58,6 @@ pub fn shape_manager() {
         base: 2.0,
     };
 
-    let shape_type_circle = ShapeType::Circle(circle);
-    shape_type_circle.render_infos();
-
-    let shape_type_triangle = ShapeType::Triangle(triangle);
-    shape_type_triangle.render_infos();
+    let vec_of_shape_types:Vec<ShapeType> = vec![ShapeType::Circle(circle), ShapeType::Triangle(triangle)];
+    vec_of_shape_types.iter().map(|item| item.render_infos()).for_each(drop);
 }
