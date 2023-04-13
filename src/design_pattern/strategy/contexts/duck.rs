@@ -1,8 +1,4 @@
-use crate::design_pattern::strategy::concrete_strategies::walk::WalkWithFeet;
-use crate::design_pattern::strategy::concrete_strategies::fly::FlyWithWings;
-use crate::design_pattern::strategy::concrete_strategies::i_cannot::ICanNot;
-use crate::design_pattern::strategy::locomotion_trait::LocomotionBehaviour;
-use crate::design_pattern::locomotion_enum::LocomotionEnum;
+use crate::design_pattern::{strategy::{concrete_strategies::{walk::WalkWithFeet, fly::FlyWithWings, i_cannot::ICanNot},locomotion_trait::LocomotionBehaviour},locomotion_enum::LocomotionEnum};
 
 pub trait Duck {
     fn get_locomotion_behaviour(&self, index: usize) -> &dyn LocomotionBehaviour;
@@ -19,8 +15,7 @@ pub trait Duck {
 
 pub struct MallardDuck {
     possible_locomotion_behaviour:Vec<Box<dyn LocomotionBehaviour>>
-}
-    
+}    
 
 impl Duck for MallardDuck {
     fn get_locomotion_behaviour(&self, index:usize) -> &dyn LocomotionBehaviour {
