@@ -14,7 +14,7 @@ mod tests {
     #[test]
     fn it_works(){
         let is_number_like_zero = |x| {if x == 0.0 {true} else {false}};
-        division(5.0,0.0,is_number_like_zero);
+        division(5.0,0.0,is_number_like_zero); 
         assert_eq!(0,0);
     }
 }
